@@ -16,7 +16,7 @@ public class FilmController {
     @Autowired
     FilmRepository filmRepository;
 
-    @RequestMapping(value = "/index")
+    @RequestMapping(value = "/index.html")
     public String index() {
         return "index";
     }
