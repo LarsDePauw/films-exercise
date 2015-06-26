@@ -9,6 +9,9 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -16,6 +19,7 @@ import javax.sql.DataSource;
 @Configuration
 @ComponentScan
 @EnableJpaRepositories
+@EnableWebMvc
 public class ApplicationConfiguration {
     @Bean
     public DataSource dataSource() {
@@ -45,4 +49,11 @@ public class ApplicationConfiguration {
         return new JpaTransactionManager(entityManagerFactory);
     }
 
+    @Bean
+    public ViewResolver viewResolver() {
+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+        viewResolver.setPrefix("/WEB-INF/views/");
+        viewResolver.setSuffix(".jsp");
+        return viewResolver;
+    }
 }
