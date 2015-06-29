@@ -1,5 +1,7 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="k" tagdir="/WEB-INF/tags" %>
 
 <!DOCTYPE html>
 
@@ -15,16 +17,8 @@
         <div class="container">
             <h1>Create film</h1>
             <sf:form commandName="film" action="/create">
-                <div class="form-group">
-                    <label for="title">Title:</label>
-                    <%--Having a duplicate id IntelliJ error? That's just a glitch; ignore it.--%>
-                    <sf:input path="title" class="form-control"/>
-                    <span class="label label-danger"><sf:errors path="title"/></span>
-                </div>
-                <div class="form-group">
-                    <label for="poster">Poster:</label>
-                    <sf:input path="poster" class="form-control"/>
-                </div>
+                <k:form-element path="title" label="Title:"/>
+                <k:form-element path="poster" label="Poster:"/>
                 <sf:hidden path="id"/>
                 <button type="submit" class="btn btn-success">Submit</button>
             </sf:form>
