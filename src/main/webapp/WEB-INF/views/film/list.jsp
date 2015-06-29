@@ -37,6 +37,7 @@
                             <tr>
                                 <td>${film.id}</td>
                                 <td><a href="film?id=${film.id}">${film.title}</a></td>
+                                <td><a href="form?id=${film.id}">Edit</a></td>
                             </tr>
                         </c:forEach>
                     </table>
